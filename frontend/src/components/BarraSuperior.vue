@@ -44,7 +44,7 @@ const emit = defineEmits(['anadir-modelo', 'cambiar-vista'])
   </header>
 </template>
 
-<style>
+<style scoped>
 .navbar {
   display: flex;
   align-items: center;

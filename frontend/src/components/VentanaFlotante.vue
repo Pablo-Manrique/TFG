@@ -1,23 +1,15 @@
 <script setup>
 import { ref } from 'vue'
 
-defineProps({
-    titulo: {
-        type: String,
-        default: 'Ventana de modelo'
-    }
-})
-
-const emit = defineEmits(['cerrar'])
-
 const minimizada = ref(false)
 
-// Posición inicial (esquina inferior derecha)
-const pos = ref({
-    x: window.innerWidth - 440,
-    y: window.innerHeight - 360
-})
+const ancho = Math.min(620, window.innerWidth * 0.9)
+const alto = 400
 
+const pos = ref({
+  x: ancho/4,
+  y: alto/4
+})
 let arrastrando = false
 let offset = { x: 0, y: 0 }
 
@@ -51,15 +43,10 @@ const soltar = () => {
         <aside class="ventana-flotante" :class="{ minimizada }" :style="{ left: `${pos.x}px`, top: `${pos.y}px` }">
             <!-- Barra superior arrastrable -->
             <header class="ventana-cabecera" @mousedown="iniciarArrastre">
-                <span class="ventana-titulo">{{ titulo }}</span>
-
                 <div class="ventana-controles" @mousedown.stop>
                     <button type="button" class="btn-control" :title="minimizada ? 'Restaurar' : 'Minimizar'"
                         @click="minimizada = !minimizada">
                         {{ minimizada ? '□' : '—' }}
-                    </button>
-                    <button type="button" class="btn-control btn-cerrar" title="Cerrar" @click="emit('cerrar')">
-                        ✕
                     </button>
                 </div>
             </header>
@@ -75,8 +62,8 @@ const soltar = () => {
 <style scoped>
 .ventana-flotante {
     position: fixed;
-    width: 420px;
-    max-height: 75vh;
+    width: 80%;
+    height: 80%;
     background: #ffffff;
     border: 1px solid #cbd5e1;
     border-radius: 10px;
@@ -88,7 +75,7 @@ const soltar = () => {
 }
 
 .ventana-flotante.minimizada {
-    width: 280px;
+    width: auto;
     height: auto;
 }
 
@@ -124,17 +111,10 @@ const soltar = () => {
     font-weight: bold;
 }
 
-.btn-control:hover {
-    background: rgba(255, 255, 255, 0.35);
-}
-
-.btn-cerrar:hover {
-    background: #dc2626;
-}
-
 .ventana-cuerpo {
     padding: 1rem;
     overflow-y: auto;
     flex: 1;
+    height: 100%;
 }
 </style>

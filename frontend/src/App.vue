@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-import { RouterLink, RouterView } from "vue-router";
 import BarraSuperior from "./components/BarraSuperior.vue";
 import HomeView from "./views/HomeView.vue"
 import AboutView from './views/AboutView.vue';
@@ -9,13 +8,11 @@ const vista = ref(null)
 const simulacion = ref(true)
 
 const manejarAnadirModelo = async (nombreModelo) => {
-  // Invoca el método expuesto con defineExpose en ModelosView.vue
   vista.value?.anadirModelo(nombreModelo)
   simulacion.value = true
 }
 
 const manejarVista = async (sim) => {
-  // Invoca el método expuesto con defineExpose en ModelosView.vue
   simulacion.value = sim
 }
 </script>

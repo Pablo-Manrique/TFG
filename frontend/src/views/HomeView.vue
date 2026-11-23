@@ -49,8 +49,7 @@ defineExpose({
       <Simulador :modelo="modelo" @quitar-modelo="manejarQuitarModelo" @cambiar-pop="manejarPopUp"/>
     </div>
 
-    <VentanaFlotante v-for="modelo in modelosFlotantes" :key="modelo.id" :titulo="modelo.nombre"
-      @cerrar="manejarQuitarModelo(modelo)">
+    <VentanaFlotante v-for="modelo in modelosFlotantes" :key="modelo.id">
       <Simulador :modelo="modelo" @quitar-modelo="manejarQuitarModelo" @cambiar-pop="manejarPopUp"/>
     </VentanaFlotante>
   </div>

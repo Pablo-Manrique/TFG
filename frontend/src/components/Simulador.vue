@@ -37,7 +37,7 @@ const emit = defineEmits(['quitar-modelo', 'cambiar-pop'])
           ✕
         </button>
         <button type="button" class="btn-cerrar" @click="sacarModelo">
-          <span class="material-icons">{{props.modelo.flotante ? 'open_in_new_down' : 'open_in_new'}}</span>
+          <span class="material-symbols-outlined">{{props.modelo.flotante ? 'pip_exit' : 'picture_in_picture'}}</span>
         </button>
       </header>
 
@@ -58,6 +58,7 @@ const emit = defineEmits(['quitar-modelo', 'cambiar-pop'])
   padding: 10px;
   overflow: hidden;
   background-color: #ffffff;
+  height: 100%;
 }
 
 .barra-params {
